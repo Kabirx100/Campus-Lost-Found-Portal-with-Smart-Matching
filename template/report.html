@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block content %}
+<h2>Report a {{ kind }} item</h2>
+<form class="report" method="post" enctype="multipart/form-data">
+<label>Title<input name="title" required></label>
+<label>Description (colour, brand, marks)<textarea name="description" rows="3"></textarea></label>
+<label>Category<select name="category">{% for c in categories %}<option>{{ c }}</option>{% endfor %}</select></label>
+<label>Location<input name="location" required placeholder="e.g. Library 2nd floor"></label>
+<label>Date<input type="date" name="date" required></label>
+<label>Contact (email or phone)<input name="contact" required></label>
+<label>Photo (optional)<input type="file" name="image" accept="image/*"></label>
+<button>Submit</button></form>{% endblock %}
