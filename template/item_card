@@ -1,0 +1,19 @@
+<div class="col-md-4 col-sm-6">
+  <div class="card h-100">
+    {% if it['image'] %}
+    <img class="item-thumb card-img-top" src="{{ url_for('static', filename='uploads/' ~ it['image']) }}" alt="{{ it['title'] }}">
+    {% else %}
+    <div class="item-thumb-empty card-img-top"><i class="bi bi-image"></i></div>
+    {% endif %}
+    <div class="card-body">
+      <span class="badge {{ 'badge-lost' if it['type'] == 'lost' else 'badge-found' }} mb-2">{{ it['type']|upper }}</span>
+      <h6 class="card-title mb-1">{{ it['title'] }}</h6>
+      <div class="small text-muted"><i class="bi bi-tag"></i> {{ it['category'] }}</div>
+      <div class="small text-muted"><i class="bi bi-geo-alt"></i> {{ it['location'] }}</div>
+      <div class="small text-muted"><i class="bi bi-calendar"></i> {{ it['event_date'] }}</div>
+    </div>
+    <div class="card-footer bg-white border-0 pb-3">
+      <a class="btn btn-sm btn-outline-primary w-100" href="{{ url_for('item_detail', item_id=it['id']) }}">View details</a>
+    </div>
+  </div>
+</div>
